@@ -28,7 +28,7 @@ const Chart = ({ data = [] }) => {
       },
       labels: {
         formatter: function () {
-          return data.data[this.pos][0];
+          return data && data.data[this.pos][0];
         },
       },
     },
@@ -53,6 +53,10 @@ const Chart = ({ data = [] }) => {
       },
     ],
   };
+
+  if (data.length === 0) {
+    return <></>;
+  }
 
   return (
     <div className="chart">
