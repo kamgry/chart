@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import { CompanySelector } from "./containers";
+import { Header } from "./components";
+import { Home } from "./pages";
+import "./App.css";
 
-function App() {
+export const ParametersContext = createContext({});
+
+const App = () => {
+  const [company, setCompany] = useState("");
+
+  const [data, setData] = useState({});
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ParametersContext.Provider value={{ company, data }}>
+        <Header>
+          <CompanySelector
+            setCompany={setCompany}
+            company={company}
+            setData={setData}
+          />
+        </Header>
+        <Home />
+      </ParametersContext.Provider>
     </div>
   );
-}
+};
 
 export default App;
