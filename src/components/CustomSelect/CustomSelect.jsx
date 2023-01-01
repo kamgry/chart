@@ -13,6 +13,7 @@ const CustomSelect = ({ items = [], handleChange, label, value }) => {
           value={value}
           label={label}
           onChange={handleChange}
+          disabled={items.length === 0}
         >
           {items.map(({ id, name }) => (
             <MenuItem key={id} value={id}>

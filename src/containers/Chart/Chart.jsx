@@ -3,10 +3,6 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "./Chart.scss";
 
-const prepareData = (data) => {
-  return data.data;
-};
-
 const Chart = ({ data = [] }) => {
   const options = {
     chart: {
@@ -28,7 +24,7 @@ const Chart = ({ data = [] }) => {
       },
       labels: {
         formatter: function () {
-          return data && data.data[this.pos][0];
+          return data[this.pos][0];
         },
       },
     },
@@ -48,7 +44,7 @@ const Chart = ({ data = [] }) => {
     series: [
       {
         showInLegend: false,
-        data: prepareData(data),
+        data: data,
         color: "#ff0000",
       },
     ],

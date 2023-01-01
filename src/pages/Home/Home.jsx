@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <PageWrapper>
-      <Chart data={chartData} />
+      <Chart data={chartData.data} />
     </PageWrapper>
   );
 };
